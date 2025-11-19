@@ -1,4 +1,5 @@
 class Source < ApplicationRecord
+  has_many :posts, dependent: :destroy
   before_validation :normalize!
 
   validates :platform, presence: true, length: { maximum: 20 }

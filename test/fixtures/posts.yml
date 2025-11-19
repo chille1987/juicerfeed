@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source: one
+  comments: 13
+  content: This is content for the first post
+  hashtags: travel
+  is_promoted: false
+  likes: 1
+  location: Barcelona
+  media_type: carousel
+  media_url: https://picsum.photos/seed/8710/800/600
+  mentions: "@john_doe @jane_smith"
+  profile_image: https://picsum.photos/seed/6944/400/400
+  shares: 112
+  views: 14343
