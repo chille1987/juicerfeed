@@ -42,7 +42,7 @@ class FetchSourcesFromApiTest < ActiveSupport::TestCase
     assert_equal 2, Source.count
     assert_equal %w[x facebook].sort, Source.pluck(:platform).sort
     assert_equal %w[x_user facebook_user].sort, Source.pluck(:username).sort
-    assert_equal [1, 2].sort, Source.pluck(:external_id).sort
+    assert_equal [ 1, 2 ].sort, Source.pluck(:external_id).sort
   end
 
   test "retries on 500 then succeeds" do
