@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_19_073302) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_19_154725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -18,6 +18,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_19_073302) do
     t.integer "comments", default: 0, null: false
     t.text "content"
     t.datetime "created_at", null: false
+    t.integer "external_id"
     t.string "hashtags"
     t.boolean "is_promoted", default: false, null: false
     t.integer "likes", default: 0, null: false
@@ -30,6 +31,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_19_073302) do
     t.bigint "source_id", null: false
     t.datetime "updated_at", null: false
     t.integer "views", default: 0, null: false
+    t.index ["external_id"], name: "index_posts_on_external_id", unique: true
     t.index ["media_type", "created_at"], name: "index_posts_on_media_type_and_created_at"
     t.index ["media_type", "views"], name: "index_posts_on_media_type_and_views"
     t.index ["source_id", "created_at"], name: "index_posts_on_source_and_created_at"
@@ -39,9 +41,11 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_19_073302) do
 
   create_table "sources", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.integer "external_id"
     t.string "platform", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
+    t.index ["external_id"], name: "index_sources_on_external_id", unique: true
     t.index ["platform", "username"], name: "index_sources_on_platform_and_username", unique: true
   end
 

@@ -27,8 +27,8 @@ class FetchSourcesFromApiTest < ActiveSupport::TestCase
           200,
           { "Content-Type" => "application/json" },
           [
-            { "platform" => "x", "username" => "x_user" },
-            { "platform" => "facebook", "username" => "facebook_user" }
+            { "id" => 1, "platform" => "x", "username" => "x_user" },
+            { "id" => 2, "platform" => "facebook", "username" => "facebook_user" }
           ].to_json
         ]
       end
@@ -42,6 +42,7 @@ class FetchSourcesFromApiTest < ActiveSupport::TestCase
     assert_equal 2, Source.count
     assert_equal %w[x facebook].sort, Source.pluck(:platform).sort
     assert_equal %w[x_user facebook_user].sort, Source.pluck(:username).sort
+    assert_equal [1, 2].sort, Source.pluck(:external_id).sort
   end
 
   test "retries on 500 then succeeds" do
@@ -63,7 +64,8 @@ class FetchSourcesFromApiTest < ActiveSupport::TestCase
             200,
             { "Content-Type" => "application/json" },
             [
-              { "platform" => "facebook", "username" => "facebook_user" }
+              { "id" => 1, "platform" => "x", "username" => "x_user" },
+              { "id" => 2, "platform" => "facebook", "username" => "facebook_user" }
             ].to_json
           ]
         end
@@ -76,9 +78,9 @@ class FetchSourcesFromApiTest < ActiveSupport::TestCase
     result = service.call
 
     assert_equal true, result
-    assert_equal 1, Source.count
-    assert_equal [ "facebook" ], Source.pluck(:platform)
-    assert_equal [ "facebook_user" ], Source.pluck(:username)
+    assert_equal 2, Source.count
+    assert_equal %w[x facebook], Source.pluck(:platform)
+    assert_equal %w[x_user facebook_user], Source.pluck(:username)
   end
 
   test "retries on 429 using Retry-After header" do
@@ -100,7 +102,8 @@ class FetchSourcesFromApiTest < ActiveSupport::TestCase
             200,
             { "Content-Type" => "application/json" },
             [
-              { "platform" => "x", "username" => "x_user" }
+              { "id" => 1, "platform" => "x", "username" => "x_user" },
+              { "id" => 2, "platform" => "facebook", "username" => "facebook_user" }
             ].to_json
           ]
         end
@@ -113,8 +116,8 @@ class FetchSourcesFromApiTest < ActiveSupport::TestCase
     result = service.call
 
     assert_equal true, result
-    assert_equal 1, Source.count
-    assert_equal [ "x" ], Source.pluck(:platform)
-    assert_equal [ "x_user" ], Source.pluck(:username)
+    assert_equal 2, Source.count
+    assert_equal %w[x facebook], Source.pluck(:platform)
+    assert_equal %w[x_user facebook_user], Source.pluck(:username)
   end
 end

@@ -4,6 +4,7 @@ class Source < ApplicationRecord
 
   validates :platform, presence: true, length: { maximum: 20 }
   validates :username, presence: true, uniqueness: { scope: :platform }
+  validates :external_id, uniqueness: true, allow_nil: true
 
   private
 

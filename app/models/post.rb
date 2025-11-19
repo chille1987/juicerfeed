@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   validates :media_type, inclusion: { in: MEDIA_TYPES }
   validates :likes, :comments, :shares, :views, numericality: { greater_than_or_equal_to: 0 }
   validates :is_promoted, inclusion: { in: [ true, false ] }
+  validates :external_id, uniqueness: true, allow_nil: true
 
   scope :recent, -> { order(created_at: :desc) }
 

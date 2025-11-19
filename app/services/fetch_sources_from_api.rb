@@ -84,6 +84,7 @@ class FetchSourcesFromApi
 
   def import_sources(rows)
     rows.each do |row|
+      api_id = row["id"]
       platform = row["platform"]
       username = row["username"]
 
@@ -93,7 +94,14 @@ class FetchSourcesFromApi
       end
 
       begin
-        Source.find_or_create_by!(platform: platform, username: username)
+        if api_id.present?
+          Source.find_or_create_by!(external_id: api_id) do |source|
+            source.platform = platform
+            source.username = username
+          end
+        else
+          Source.find_or_create_by!(platform:, username:)
+        end
       rescue ActiveRecord::RecordNotUnique
         next
       end
