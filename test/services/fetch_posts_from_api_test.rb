@@ -125,7 +125,7 @@ class FetchPostsFromApiTest < ActiveSupport::TestCase
           [
             {
               "id" => 1, "sourceId" => 1, "comments" => 413, "content" => "Post retry one content", "hashtags" => "#music #vibes", "isPromoted" => false, "likes" => 4889, "location" => "Barcelona", "mediaType" => "carousel", "mediaUrl" => "https://picsum.photos/seed/8710/800/600", "mentions" => "@john_doe @jane_smith", "profileImage"=> "https://picsum.photos/seed/6944/400/400", "shares" => 135, "views" => 41819
-            },
+            }
           ].to_json
         ]
       end

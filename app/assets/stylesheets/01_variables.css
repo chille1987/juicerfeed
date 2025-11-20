@@ -1,0 +1,10 @@
+:root {
+  --bg: #faf9f5;
+  --text: #222222;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --radius: .5rem;
+  --max-width: 1000px;
+  --page-padding: 1rem;
+  --focus-ring: 3px;
+}
