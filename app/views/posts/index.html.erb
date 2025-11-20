@@ -1,2 +1,15 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="main-content">
+  <% if @posts.empty? %>
+    <div class="empty" role="status" aria-live="polite">
+      <div class="empty__icon">
+        <%= svg "illustrations/no-data.svg", width: 80, height: 80 %>
+      </div>
+      <h2 class="empty__title">No posts found</h2>
+      <h3 class="empty__subtitle">Try changing filters or refreshing the data.</h3>
+    </div>
+  <% else %>
+    <div id="posts">
+      <%= render @posts %>
+    </div>
+  <% end %>
+</div>

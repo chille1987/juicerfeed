@@ -1,5 +1,7 @@
 <header>
   <div class="header__wrapper">
-    <%= link_to "JuicerFeed", root_path, class: "logo" %>
+    <%= link_to root_path, class: "logo" do %>
+      <%= svg "juicerfeed-logo--primary.svg", width: 120 %>
+    <% end %>
   </div>
 </header>

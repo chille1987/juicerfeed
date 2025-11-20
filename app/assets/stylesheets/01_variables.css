@@ -1,10 +1,13 @@
 :root {
+  --brand: #f05b4a;
   --bg: #faf9f5;
   --text: #222222;
   --muted: #6b7280;
   --accent: #2563eb;
+  --border: #e3dacc;
+  --white: #FFFFFF;
+  --red: #EE4B2B;
   --radius: .5rem;
-  --max-width: 1000px;
-  --page-padding: 1rem;
+  --max-width: 960px;
   --focus-ring: 3px;
 }
