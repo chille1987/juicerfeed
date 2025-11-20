@@ -3,7 +3,9 @@
 one:
   platform: Instagram
   username: insta_user
+  external_id: 1
 
 two:
   platform: X
   username: x_user
+  external_id: 2
