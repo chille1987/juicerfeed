@@ -10,7 +10,7 @@
   <% else %>
     <div id="posts">
       <%= turbo_frame_tag :posts_page, @pagy.page do %>
-        <%= render @posts %>
+        <%= render partial: "posts/post", collection: @posts, cached: true %>
         <% if @pagy.next %>
           <%= turbo_frame_tag :posts_page, @pagy.next, src: posts_path(page: @pagy.next), loading: :lazy %>
         <% end %>
