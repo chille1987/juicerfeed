@@ -54,6 +54,7 @@ main {
   page-break-inside: avoid;
 
   .post-card__header {
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -74,20 +75,34 @@ main {
         font-size: .875rem;
         font-weight: 600;
       }
-      time {
-        font-size: .75rem;
-        color: var(--muted);
+      div {
+        display: flex;
+        align-items: center;
+        gap: .3125rem;
+        time, span {
+          font-size: .75rem;
+          color: var(--muted);
+        }
+        time::after {
+          content: "";
+          display: inline-flex;
+          width: .25rem;
+          height: .25rem;
+          border-radius: 50%;
+          background: var(--muted);
+          margin: 0 0 0 .3125rem;
+          vertical-align: middle;
+        }
       }
     }
 
-    .post-card__source {
-      margin-left: auto;
-      align-self: end;
-      padding-bottom: .3125rem;
+    .post-card__promoted {
+      position: absolute;
+      top: 1rem;
+      right: .625rem;
+      z-index: 10;
       svg {
         color: var(--muted);
-        opacity: 0;
-        transition: .3s ease;
       }
     }
   }

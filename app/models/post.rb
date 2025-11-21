@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validates :external_id, uniqueness: true, allow_nil: true
 
   scope :recent, -> { order(created_at: :desc) }
+  scope :feed_order, -> { order(is_promoted: :desc, created_at: :desc) }
 
   private
 
