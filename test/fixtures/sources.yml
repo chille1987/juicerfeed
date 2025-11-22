@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  platform: Instagram
+  platform: instagram
   username: insta_user
   external_id: 1
 
 two:
-  platform: X
+  platform: x
   username: x_user
   external_id: 2

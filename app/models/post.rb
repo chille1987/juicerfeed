@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   MEDIA_TYPES = %w[text image video carousel].freeze
 
   before_validation :normalize_media_type!
+  validate :media_url_must_be_safe
 
   validates :source, presence: true
   validates :media_type, inclusion: { in: MEDIA_TYPES }
@@ -25,5 +26,17 @@ class Post < ApplicationRecord
 
   def normalize_media_type!
     self.media_type = media_type.to_s.downcase.presence || "text"
+  end
+
+  def media_url_must_be_safe
+    return if media_url.blank?
+
+    uri = URI.parse(media_url)
+
+    unless uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
+      errors.add(:media_url, "must be a valid http(s) URL")
+    end
+  rescue URI::InvalidURIError
+    errors.add(:media_url, "must be a valid http(s) URL")
   end
 end

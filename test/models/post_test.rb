@@ -44,4 +44,11 @@ class PostTest < ActiveSupport::TestCase
     post2.validate
     assert_equal "text", post2.media_type
   end
+
+  test "media_url must be http or https" do
+    post = build_post(media_url: "javascript:alert(1)")
+
+    assert_not post.valid?
+    assert_includes post.errors[:media_url], "must be a valid http(s) URL"
+  end
 end
