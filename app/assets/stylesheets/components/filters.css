@@ -1,0 +1,33 @@
+.filter-bar {
+  margin-bottom: 1rem;
+  background: var(--bg);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  .filter-bar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: .625rem;
+
+    .filter-bar__field {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .filter-bar__header {
+      display: none;
+    }
+    form {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+  }
+}

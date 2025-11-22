@@ -1,0 +1,16 @@
+.empty {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 2rem;
+  text-align: center;
+  .empty__icon {
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: 0 auto;
+  }
+  .empty__subtitle {
+    font-size: 1.25rem;
+    font-weight: normal;
+  }
+}

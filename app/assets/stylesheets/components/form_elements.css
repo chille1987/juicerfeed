@@ -1,0 +1,17 @@
+select {
+  border: 1px solid var(--gray-300);
+  border-radius: .375rem;
+  padding: .5rem;
+  background: var(--white);
+  transition: .3s ease;
+  &:hover {
+    border-color: var(--gray-400);
+  }
+}
+
+label {
+  display: block;
+  font-size: .875rem;
+  color: var(--text);
+  margin-bottom: .5rem;
+}

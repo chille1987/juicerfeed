@@ -9,5 +9,16 @@
   --red: #EE4B2B;
   --radius: .5rem;
   --max-width: 960px;
-  --focus-ring: 3px;
+  --focus-ring: .25rem;
+  --gray-25: #FCFCFD;
+  --gray-50: #F9FAFB;
+  --gray-100: #F2F4F7;
+  --gray-200: #EAECF0;
+  --gray-300: #D0D5DD;
+  --gray-400: #98A2B3;
+  --gray-500: #667085;
+  --gray-600: #475467;
+  --gray-700: #344054;
+  --gray-800: #1D2939;
+  --gray-900: #101828;
 }

@@ -1,4 +1,6 @@
 <div class="main-content">
+  <%= render partial: "posts/filter_bar", locals: { platforms: @platforms, media_types: @media_types, sources: @sources, filter: @filter } %>
+
   <% if @posts.empty? %>
     <div class="empty" role="status" aria-live="polite">
       <div class="empty__icon">
@@ -12,7 +14,7 @@
       <%= turbo_frame_tag :posts_page, @pagy.page do %>
         <%= render partial: "posts/post", collection: @posts, cached: true %>
         <% if @pagy.next %>
-          <%= turbo_frame_tag :posts_page, @pagy.next, src: posts_path(page: @pagy.next), loading: :lazy %>
+          <%= turbo_frame_tag :posts_page, @pagy.next, src: posts_path(request.query_parameters.merge(page: @pagy.next)), loading: :lazy %>
         <% end %>
       <% end %>
     </div>

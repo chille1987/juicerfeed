@@ -13,6 +13,13 @@ class Post < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
   scope :feed_order, -> { order(is_promoted: :desc, created_at: :desc) }
+  scope :by_media_type, ->(media_type) { where(media_type: media_type) if media_type.present? }
+  scope :by_source_id, ->(source_id) { where(source_id: source_id) if source_id.present? }
+  scope :by_platform, ->(platform) {
+    return all if platform.blank?
+
+    joins(:source).where(sources: { platform: platform })
+  }
 
   private
 
