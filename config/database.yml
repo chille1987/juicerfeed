@@ -98,7 +98,8 @@ production:
     <<: *default
     database: juicerfeed_production
     username: juicerfeed
-    password: <%= ENV["JUICERFEED_DATABASE_PASSWORD"] %>
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
+    host: <%= ENV.fetch("DB_HOST", "juicerfeed-db") %>
   cache:
     <<: *primary_production
     database: juicerfeed_production_cache

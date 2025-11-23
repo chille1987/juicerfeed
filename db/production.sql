@@ -1,0 +1,4 @@
+CREATE DATABASE juicerfeed_production;
+CREATE DATABASE juicerfeed_production_cache;
+CREATE DATABASE juicerfeed_production_queue;
+CREATE DATABASE juicerfeed_production_cable;
