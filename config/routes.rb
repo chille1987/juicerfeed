@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts, only: :index
+
+  # Background Jobs
+  mount MissionControl::Jobs::Engine, at: "/jobs"
 end

@@ -3,5 +3,13 @@
     <%= link_to root_path, class: "logo" do %>
       <%= svg "juicerfeed-logo--primary.svg", width: 120 %>
     <% end %>
+
+    <nav class="header__nav">
+      <ul>
+        <li>
+          <%= link_to "Jobs", "/jobs", class: "nav-link", data: { turbo_prefetch: false } %>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>

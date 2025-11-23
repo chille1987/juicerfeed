@@ -7,6 +7,31 @@ header#main-header {
   padding: .5rem 1rem;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__nav {
+    ul {
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--brand);
+  text-decoration: none;
+  transition: .3s ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 main {
