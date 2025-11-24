@@ -1,4 +1,15 @@
 <div class="main-content">
+  <div class="posts-header">
+    <h1>Latest Posts</h1>
+
+    <div class="posts-header__actions">
+      <%= button_to feed_sync_path, method: :post, class: "primary", data: { turbo: false } do %>
+        <%= svg "icons/arrow-path.svg", width: 20, height: 20 %>
+        <span>Fetch Latest Posts</span>
+      <% end %>
+    </div>
+  </div>
+
   <%= render partial: "posts/filter_bar", locals: { platforms: @platforms, media_types: @media_types, sources: @sources, filter: @filter, active_filters: @active_filters } %>
 
   <% if @posts.empty? %>

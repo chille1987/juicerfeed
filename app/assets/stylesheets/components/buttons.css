@@ -20,4 +20,17 @@ button, .btn {
   &:hover {
     background: var(--btn-bg-hover);
   }
+
+  /* Primary */
+  &.primary {
+    background-color: var(--brand);
+    color: var(--white);
+    border-color: var(--brand);
+    svg {
+      color: var(--white);
+    }
+    &:hover {
+      filter: brightness(90%);
+    }
+  }
 }

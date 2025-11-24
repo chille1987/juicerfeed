@@ -1,0 +1,10 @@
+<% flash.each do |type, message| %>
+  <%= tag.div class: "flash #{type}", data: { controller: "flash" } do %>
+    <% icon_name = type.to_sym == :alert ? "exclamation-circle" : "check" %>
+    <%= svg "icons/#{icon_name}.svg", width: 20, height: 20 %>
+    <p><%= message %></p>
+    <button type="button" role="button" aria-label="Dismiss notification" data-action="flash#remove">
+      <%= svg "icons/x-mark.svg", width: 16, height: 16 %>
+    </button>
+  <% end %>
+<% end %>

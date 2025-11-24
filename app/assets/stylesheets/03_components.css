@@ -8,6 +8,13 @@ main {
   }
 }
 
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.875rem;
+}
+
 #posts {
   width: 100%;
   column-width: 290px;
