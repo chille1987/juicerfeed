@@ -52,7 +52,14 @@ cd juicerfeed
 bundle install
 ```
 
-### 4. Update config/database.yml then:
+### 4. Credentials config/database.yml:
+Juicerfeed uses credentials per environment(development, test, production) so you will need to create/edit development and test credentials by running:
+```bash
+bin/rails credentials:edit -e development
+bin/rails credentials:edit -e test
+````
+Close each file to save it and then run:
+
 ```bash
 bin/rails db:create db:migrate
 ```
@@ -75,7 +82,7 @@ In order to access UI for Background jobs under ```/jobs``` you will need a user
 bin/rails credentials:edit -e development
 ```
 
-and add username and password for mission control jobs:
+and add username and password for mission control jobs, you can add any username and password:
 ```bash
 mission_control:
   http_basic_auth_user: juicerfeed
@@ -83,6 +90,11 @@ mission_control:
 ```
 
 Development and test credentials are added in .gitignore so everyone who runs the app can have it's own credentials for development and test environment.
+
+Restart the server and now you should be able to see UI for jobs under 
+```bash
+/jobs
+```
 
 ### 7. Running the Test Suite
 Juicerfeed uses Minitest
