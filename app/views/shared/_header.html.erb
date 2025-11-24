@@ -4,12 +4,30 @@
       <%= svg "juicerfeed-logo--primary.svg", width: 120 %>
     <% end %>
 
-    <nav class="header__nav">
-      <ul>
-        <li>
-          <%= link_to "Jobs", "/jobs", class: "nav-link", data: { turbo_prefetch: false } %>
-        </li>
-      </ul>
-    </nav>
+    <button type="button" class="header__menu-toggle" @click="menuOpen = !menuOpen" :aria-expanded="menuOpen.toString()" aria-controls="main-nav">
+      <span x-show="!menuOpen">
+        <%= svg "icons/bars.svg", width: 24, height: 24 %>
+      </span>
+      <span x-show="menuOpen">
+        <%= svg "icons/x-mark.svg", width: 24, height: 24 %>
+      </span>
+    </button>
+
+    <div class="header__nav" :class="{ 'header__nav--open': menuOpen }" >
+      <nav>
+        <ul role="navigation">
+          <li>
+            <%= link_to "Jobs", "/jobs", class: "nav-link", data: { turbo_prefetch: false } %>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="theme-switcher">
+        <select id="theme-select" class="theme-switcher__select" x-model="theme" @change="setTheme(theme)">
+          <option value="light">Light Theme</option>
+          <option value="dark">Dark Theme</option>
+        </select>
+      </div>
+    </div>
   </div>
 </header>

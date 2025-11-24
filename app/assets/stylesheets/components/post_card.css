@@ -3,7 +3,7 @@
   width: 100%;
   margin: 0 0 1rem;
   border: 1px solid var(--border);
-  background: #FFFFFF;
+  background: var(--postcard-bg);
   border-radius: var(--radius);
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
@@ -15,7 +15,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: .5rem;
-    background: var(--white);
+    background: var(--postcard-bg);
     border-radius: var(--radius) var(--radius) 0 0;
     border-bottom: 1px solid var(--border);
     padding: .625rem;
@@ -68,6 +68,10 @@
     display: block;
     position: relative;
     text-decoration: none;
+    background: none;
+    padding: 0;
+    border-radius: 0px;
+    border: none;
     overflow: hidden;
     img {
       transition: .3s ease;
@@ -145,6 +149,47 @@
   &:hover {
     .post-card__header .post-card__source svg {
       opacity: .3;
+    }
+  }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .lightbox__inner {
+    position: relative;
+    max-width: 90vw;
+    max-height: 60vh;
+  }
+  .lightbox__img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+  .lightbox__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border: none;
+    padding: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    svg {
+      color: var(--white);
+    }
+    &:hover {
+      background: none;
     }
   }
 }

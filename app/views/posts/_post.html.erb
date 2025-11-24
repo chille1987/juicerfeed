@@ -15,15 +15,31 @@
     <% end %>
   </div>
 
-  <% if post.media_url.present? %>
-    <% if post.media_type.in?(%w[image carousel video]) %>
-      <%= link_to post.media_url, target: "_blank", rel: "noopener", class: "post-card__media-link" do %>
-        <%= image_tag post.media_url, alt: "", class: "post-card__media-img" %>
+  <% if post.media_url.present? && post.media_type.in?(%w[image carousel video]) %>
+    <div x-data="{ open: false }" class="post-card__media-wrapper">
+      <button type="button" class="post-card__media-link" @click="open = true">
+        <%= image_tag post.media_url, alt: post.content, class: "post-card__media-img" %>
+
         <% if post.media_type == "video" %>
-          <span><%= svg "icons/play.svg", width: 48, height: 48 %></span>
+          <span class="post-card__play-overlay">
+            <%= svg "icons/play.svg", width: 48, height: 48 %>
+          </span>
         <% end %>
-      <% end %>
-    <% end %>
+      </button>
+
+      <!-- Lightbox overlay -->
+      <template x-if="open">
+        <div class="lightbox" x-show="open" x-transition.opacity.duration.200ms @click.self="open = false" @keydown.escape.window="open = false">
+          <div class="lightbox__inner" x-transition.scale.duration.200ms>
+            <button type="button" class="lightbox__close" @click="open = false" aria-label="Close image preview">
+              <%= svg "icons/x-mark.svg", width: 24, height: 24 %>
+            </button>
+
+            <%= image_tag post.media_url, alt: post.content, class: "lightbox__img" %>
+          </div>
+        </div>
+      </template>
+    </div>
   <% end %>
 
   <div class="post-card__body">

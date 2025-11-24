@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html x-data="themeSwitcher()" x-init="init()" :data-theme="theme">
   <head>
     <title><%= content_for(:title) || "Juicerfeed" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -19,7 +19,6 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <script src="https://unpkg.com/alpinejs@3.x.x" defer></script>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -31,4 +30,8 @@
       <%= yield %>
     </main>
   </body>
+
+  <script>
+
+  </script>
 </html>

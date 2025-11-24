@@ -1,6 +1,11 @@
 :root {
   --brand: #f05b4a;
   --bg: #faf9f5;
+  --body-bg: #FFFFFF;
+  --header-bg: #faf9f5;
+  --form-el-border: #D0D5DD;
+  --form-el-border-hover: #98A2B3;
+  --postcard-bg: #FFFFFF;
   --text: #222222;
   --muted: #6b7280;
   --accent: #2563eb;
@@ -21,4 +26,21 @@
   --gray-700: #344054;
   --gray-800: #1D2939;
   --gray-900: #101828;
+  --btn-bg-hover: #F2F4F7;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #181818;
+  --body-bg: #181818;
+  --header-bg: #272727;
+  --border: #383838;
+  --select-bg: #FFFFFF;
+  --text: #c2c2c2;
+  --form-el-border: #3a3a3a;
+  --form-el-border-hover: #5C5C5C;
+  --postcard-bg: #272727;
+  --muted: #98a0b0;
+  --btn-bg-hover: #181818;
 }
