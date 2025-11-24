@@ -1,0 +1,62 @@
+[data-theme="stone"] {
+  .logo svg {
+    .cls-1 {
+      fill: var(--brand);
+    }
+  }
+
+  label {
+    color: var(--brand);
+  }
+
+  :focus-visible {
+    box-shadow: 0 0 0 var(--focus-ring) rgb(107 107 107 / 15%), 0 0 0 1px var(--brand);
+  }
+}
+
+[data-theme="dark"] select {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"> <path stroke="gray" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /> </svg>');
+}
+
+[data-theme="energy"] select {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"> <path stroke="red" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /> </svg>');
+}
+
+:root[data-theme="rose-pastel"] {
+  .logo svg {
+    .cls-1 {
+      fill: var(--bg);
+    }
+  }
+  header#main-header .header__menu-toggle {
+    svg {
+      color: var(--white);
+    }
+  }
+  label {
+    color: var(--bg);
+  }
+  .nav-link {
+    color: var(--white);
+  }
+  .analytics {
+    margin-top: 3.25rem;
+
+    .analytics__nav {
+      button {
+        color: var(--accent);
+        svg {
+          color:var(--accent);
+        }
+        &:hover {
+          background: var(--bg);
+          color: var(--brand);
+        }
+        &.analytics-tab--active {
+          background: var(--bg);
+          color: var(--brand);
+        }
+      }
+    }
+  }
+}
