@@ -1,23 +1,14 @@
-<section class="filter-bar" x-data="{ open: true }">
-  <header class="filter-bar__header">
-    <h2 class="filter-bar__title">Filters</h2>
+<section class="filter-bar">
 
-    <button type="button" class="filter-bar__toggle" @click="open = !open">
-      <%= svg "icons/funnel.svg", width: "16", height: "16" %>
-      <span x-text="open ? 'Hide Filters' : 'Show Filters'"></span>
-    </button>
-  </header>
-
-  <div class="filter-bar__body" x-show="open" x-transition>
+  <div class="filter-bar__body">
     <form x-ref="form" action="<%= posts_path %>" method="get" class="filter-bar__grid">
       <!-- Always reset page to 1 when changing filters -->
       <input type="hidden" name="page" value="1">
 
       <!-- Filter by Platform -->
       <div class="filter-bar__field">
-        <label class="filter-bar__label">Platform</label>
         <select name="post[platform]" class="filter-bar__select" @change="$refs.form.submit()">
-          <option value="">All</option>
+          <option value="">All Platforms</option>
           <% platforms.each do |platform| %>
             <option value="<%= platform %>" <%= "selected" if filter[:platform] == platform %>>
               <%= platform.titleize %>
@@ -28,9 +19,8 @@
 
       <!-- Media type -->
       <div class="filter-bar__field">
-        <label class="filter-bar__label">Media type</label>
         <select name="post[media_type]" class="filter-bar__select" @change="$refs.form.submit()">
-          <option value="">All</option>
+          <option value="">All Media Types</option>
           <% media_types.each do |media_type| %>
             <option value="<%= media_type %>" <%= "selected" if filter[:media_type] == media_type %>>
               <%= media_type.to_s.titleize %>
@@ -40,9 +30,8 @@
       </div>
 
       <div class="filter-bar__field">
-        <label class="filter-bar__label">Source</label>
         <select name="post[source_id]" class="filter-bar__select" @change="$refs.form.submit()">
-          <option value="">All</option>
+          <option value="">All Sources</option>
           <% sources.each do |source| %>
             <option value="<%= source.id %>" <%= "selected" if filter[:source_id].to_s == source.id.to_s %>>
               <%= "#{source.platform} – #{source.username}" %>
@@ -52,4 +41,17 @@
       </div>
     </form>
   </div>
+
+  <% if active_filters.any? %>
+    <div class="filter-bar__active">
+      <% active_filters.each do |f| %>
+        <span class="filter-tag">
+          <span class="filter-tag__label"><strong><%= f[:label] %></strong>:</span>
+          <span class="filter-tag__value"><%= f[:value] %></span>
+        </span>
+      <% end %>
+
+      <%= link_to "Clear", posts_path, class: "filter-bar__clear" %>
+    </div>
+  <% end %>
 </section>
