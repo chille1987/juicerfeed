@@ -1,0 +1,52 @@
+.analytics {
+  margin-top: 3.25rem;
+
+  .analytics__nav {
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+    background: var(--header-bg);
+    padding: .625rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    button {
+      border: none;
+      background: none;
+      font-weight: 500;
+      svg {
+        color: var(--text);
+      }
+      &:hover {
+        background: var(--btn-bg-hover);
+      }
+      &.analytics-tab--active {
+        background: var(--brand);
+        color: var(--white);
+        svg {
+          color: var(--white);
+        }
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+      button {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.analytics-section {
+  margin-top: 1.875rem;
+
+  .analytics-section__title {
+    margin-bottom: 1rem;
+  }
+
+  .analytics-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

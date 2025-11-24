@@ -17,6 +17,9 @@
       <nav>
         <ul role="navigation">
           <li>
+            <%= link_to "Analytics", analytics_path, class: "nav-link" %>
+          </li>
+          <li>
             <%= link_to "Jobs", "/jobs", class: "nav-link", data: { turbo_prefetch: false } %>
           </li>
         </ul>

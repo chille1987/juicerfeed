@@ -1,0 +1,37 @@
+<article class="post-card">
+  <div class="post-card__header">
+    <img src="<%= post.profile_image %>" alt="<%= post.content %>" width="40" height="40" class="post-card__image">
+    <div class="post-card__author">
+      <p>@<%= post.source.username %></p>
+      <div>
+        <time datetime="<%= post.created_at.iso8601 %>"><%= post.created_at.strftime("%d %B %Y") %></time>
+        <span><%= post.source.platform %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-card__body">
+    <% if post.content.present? %>
+      <p class="post-card__content"><%= post.content %></p>
+    <% end %>
+
+    <div class="post-card__tags">
+      <% if post.hashtags.present? %>
+        <span class="post-card__tag post-card__tag--hashtags"><%= post.hashtags %></span>
+      <% end %>
+      <% if post.mentions.present? %>
+        <span class="post-card__tag post-card__tag--mentions"><%= post.mentions %></span>
+      <% end %>
+      <% if post.location.present? %>
+        <p class="post-card__tag post-card__tag--location"><%= svg "icons/map-pin.svg", width: 14, height: 14 %> <%= post.location %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="post-card__footer">
+    <span class="likes" title="Likes"><%= svg "icons/heart-solid.svg", width: 16, height: 16 %> <%= number_with_delimiter(post.likes) %></span>
+    <span class="comments" title="Comments"><%= svg "icons/comment.svg", width: 16, height: 16 %> <%= number_with_delimiter(post.comments) %></span>
+    <span class="shares" title="Shares"><%= svg "icons/share.svg", width: 16, height: 16 %> <%= number_with_delimiter(post.shares) %></span>
+    <span class="views" title="Views"><%= svg "icons/eye.svg", width: 16, height: 16 %> <%= number_with_delimiter(post.views) %></span>
+  </div>
+</article>

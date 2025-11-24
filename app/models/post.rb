@@ -22,6 +22,11 @@ class Post < ApplicationRecord
     joins(:source).where(sources: { platform: platform })
   }
 
+  scope :top_by_views, ->(limit = 5) { order(views: :desc).limit(limit) }
+  scope :top_by_likes, ->(limit = 5) { order(likes: :desc).limit(limit) }
+  scope :top_by_comments, ->(limit = 5) { order(comments: :desc).limit(limit) }
+  scope :top_by_shares, ->(limit = 5) { order(shares: :desc).limit(limit) }
+
   private
 
   def normalize_media_type!

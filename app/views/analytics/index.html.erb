@@ -1,0 +1,71 @@
+<div class="main-content">
+  <h1>Juicerfeed Analytics</h1>
+
+  <div class="analytics" x-data="{ tab: 'views' }">
+    <nav class="analytics__nav" aria-label="Analytics sections">
+      <button type="button" class="analytics-tab" :class="{ 'analytics-tab--active': tab === 'views' }" @click="tab = 'views'">
+        <%= svg "icons/eye.svg", width: 16, height: 16 %> Top Viewed Posts
+      </button>
+
+      <button type="button" class="analytics-tab" :class="{ 'analytics-tab--active': tab === 'likes' }" @click="tab = 'likes'">
+        <%= svg "icons/heart-solid.svg", width: 16, height: 16 %> Top Liked Posts
+      </button>
+
+      <button type="button" class="analytics-tab" :class="{ 'analytics-tab--active': tab === 'comments' }" @click="tab = 'comments'">
+        <%= svg "icons/comment.svg", width: 16, height: 16 %> Top Commented Posts
+      </button>
+
+      <button type="button" class="analytics-tab" :class="{ 'analytics-tab--active': tab === 'shares' }" @click="tab = 'shares'">
+        <%= svg "icons/share.svg", width: 16, height: 16 %> Top Shared Posts
+      </button>
+    </nav>
+
+    <section class="analytics-section" x-show="tab === 'views'" x-transition x-cloak>
+      <h2 class="analytics-section__title">Top 5 Most Viewed Posts</h2>
+
+      <div class="analytics-list">
+        <% @top_posts_by_views.each do |post| %>
+          <div class="analytics-list__item">
+            <%= render partial: "posts/post_analytics_item", locals: { post: post } %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="analytics-section" x-show="tab === 'likes'" x-transition x-cloak>
+      <h2 class="analytics-section__title">Top 5 Most Likes Posts</h2>
+
+      <div class="analytics-list">
+        <% @top_posts_by_likes.each do |post| %>
+          <div class="analytics-list__item">
+            <%= render partial: "posts/post_analytics_item", locals: { post: post } %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="analytics-section" x-show="tab === 'comments'" x-transition x-cloak>
+      <h2 class="analytics-section__title">Top 5 Most Commented Posts</h2>
+
+      <div class="analytics-list">
+        <% @top_posts_by_comments.each do |post| %>
+          <div class="analytics-list__item">
+            <%= render partial: "posts/post_analytics_item", locals: { post: post } %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="analytics-section" x-show="tab === 'shares'" x-transition x-cloak>
+      <h2 class="analytics-section__title">Top 5 Most Commented Posts</h2>
+
+      <div class="analytics-list">
+        <% @top_posts_by_shares.each do |post| %>
+          <div class="analytics-list__item">
+            <%= render partial: "posts/post_analytics_item", locals: { post: post } %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>

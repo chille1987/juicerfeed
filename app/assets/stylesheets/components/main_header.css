@@ -56,7 +56,9 @@ header#main-header {
       ul {
         display: flex;
         flex-direction: column;
+        gap: .625rem;
         padding: 0;
+        margin-bottom: 1.25rem;
         li {
           list-style-type: none;
         }
@@ -85,6 +87,14 @@ header#main-header {
       }
       nav {
         padding: 0 1rem;
+        ul {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 1rem;
+          margin: 0;
+        }
       }
     }
   }

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts, only: :index
+  get "/analytics" => "analytics#index", as: :analytics
 
   # Background Jobs
   mount MissionControl::Jobs::Engine, at: "/jobs"

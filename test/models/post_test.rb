@@ -51,4 +51,52 @@ class PostTest < ActiveSupport::TestCase
     assert_not post.valid?
     assert_includes post.errors[:media_url], "must be a valid http(s) URL"
   end
+
+  test "top_by_views returns posts ordered by views desc and limited" do
+    Post.delete_all
+
+    post1 = Post.create!(source: @source, media_type: "text", views: 10, likes: 0, comments: 0, shares: 0)
+    post2 = Post.create!(source: @source, media_type: "text", views: 50, likes: 0, comments: 0, shares: 0)
+    post3 = Post.create!(source: @source, media_type: "text", views: 30, likes: 0, comments: 0, shares: 0)
+
+    result = Post.top_by_views(2)
+
+    assert_equal [ post2, post3 ], result
+  end
+
+  test "top_by_likes returns posts ordered by likes desc and limited" do
+    Post.delete_all
+
+    post1 = Post.create!(source: @source, media_type: "text", views: 10, likes: 13, comments: 0, shares: 0)
+    post2 = Post.create!(source: @source, media_type: "text", views: 50, likes: 23, comments: 0, shares: 0)
+    post3 = Post.create!(source: @source, media_type: "text", views: 30, likes: 33, comments: 0, shares: 0)
+
+    result = Post.top_by_likes(2)
+
+    assert_equal [ post3, post2 ], result
+  end
+
+  test "top_by_comments returns posts ordered by comments desc and limited" do
+    Post.delete_all
+
+    post1 = Post.create!(source: @source, media_type: "text", views: 10, likes: 13, comments: 10, shares: 0)
+    post2 = Post.create!(source: @source, media_type: "text", views: 50, likes: 23, comments: 5, shares: 0)
+    post3 = Post.create!(source: @source, media_type: "text", views: 30, likes: 33, comments: 8, shares: 0)
+
+    result = Post.top_by_comments(2)
+
+    assert_equal [ post1, post3 ], result
+  end
+
+  test "top_by_shares returns posts ordered by shares desc and limited" do
+    Post.delete_all
+
+    post1 = Post.create!(source: @source, media_type: "text", views: 10, likes: 13, comments: 10, shares: 2)
+    post2 = Post.create!(source: @source, media_type: "text", views: 50, likes: 23, comments: 5, shares: 0)
+    post3 = Post.create!(source: @source, media_type: "text", views: 30, likes: 33, comments: 8, shares: 4)
+
+    result = Post.top_by_shares(2)
+
+    assert_equal [ post3, post1 ], result
+  end
 end
