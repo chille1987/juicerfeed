@@ -45,20 +45,21 @@
   --accent: #5781f8;
 }
 
-:root[data-theme="stone"] {
+:root[data-theme="sage"] {
   color-scheme: light;
-  --brand: #78716c;
-  --bg: #f5f5f4;
-  --body-bg: #fafaf9;
-  --header-bg: #e7e5e4;
-  --postcard-bg: #ffffff;
-  --text: #1c1917;
-  --muted: #78716c;
-  --accent: #4b5563;
-  --border: #d6d3d1;
-  --form-el-border: #d6d3d1;
-  --form-el-border-hover: #a8a29e;
-  --btn-bg-hover: #e7e5e4;
+  --brand: #1F766F;
+  --accent: #2F9E93;
+  --bg: #F3F5F4;
+  --body-bg: #E5EFEC;
+  --header-bg: #D1E3DC;
+  --postcard-bg: #FFFFFF;
+  --text: #102A26;
+  --muted: #64746E;
+  --border: #C5D6CF;
+  --form-el-border: #C5D6CF;
+  --form-el-border-hover: #94B2A8;
+  --btn-bg-hover: #E2ECE7;
+  --select-bg: #FFFFFF;
 }
 
 :root[data-theme="energy"] {

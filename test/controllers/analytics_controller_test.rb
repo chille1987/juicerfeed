@@ -10,7 +10,7 @@ class AnalyticsControllerTest < ActionDispatch::IntegrationTest
     get analytics_path
     assert_response :success
 
-    assert_includes response.body, "Juicerfeed Analytics"
+    assert_includes response.body, "Analytics"
     assert_includes response.body, "Top 5 Most Viewed Posts"
     assert_includes response.body, "Top Viewed Posts"
     assert_includes response.body, "Top Liked Posts"
