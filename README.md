@@ -6,7 +6,7 @@ Juicerfeed is a Ruby on Rails 8 app for exploring social posts from multiple sou
 
 - **Sources** imported from a Mockend API
 - **Posts** imported from the same API
-- **Filtering** by platform, media type, source, and promoted flag
+- **Filtering** by platform, media type and source.
 - **Infinite scroll** on the posts feed
 - A small **analytics dashboard** (top posts by views, likes, comments, shares)
 
